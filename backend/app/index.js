@@ -12,7 +12,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.post("/signup", async (req, res) => {
   let user = req.body;
   try {
-    console.log(user);
     const result = await db.pool.query(
       "insert into users (user, mail, password) values (?, ?, ?)",
       [user.user, user.mail, user.password]
