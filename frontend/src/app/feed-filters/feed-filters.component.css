@@ -1,0 +1,14 @@
+.controls {
+  margin: 20px auto;
+  width: 89%;
+}
+
+.controls .btn {
+  margin-right: 10px;
+  border: 1px solid #ccc;
+}
+
+.controls .datepicker {
+  text-align: right;
+  width: 10%;
+}

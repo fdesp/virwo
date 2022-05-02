@@ -1,0 +1,35 @@
+<div class="row controls">
+  <div class="col">
+    <button
+      id="international"
+      class="btn"
+      (click)="toggleFilter()"
+      [ngClass]="{
+        'btn-light': !isInternational(),
+        'btn-secondary': isInternational()
+      }"
+    >
+      International
+    </button>
+    <button
+      id="Local"
+      class="btn btn-light"
+      (click)="toggleFilter()"
+      [ngClass]="{
+        'btn-light': !isLocal(),
+        'btn-secondary': isLocal()
+      }"
+    >
+      Local
+    </button>
+  </div>
+  <div class="col col-auto">
+    <input
+      class="datepicker"
+      [(ngModel)]="from"
+      type="date"
+      (change)="datePicked()"
+      class="form-control"
+    />
+  </div>
+</div>
