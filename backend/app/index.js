@@ -27,7 +27,7 @@ app.post("/login", async (req, res) => {
   let user = req.body;
   try {
     await db.pool.query(
-      `select * from users where ${user.user} and ${user.password}`
+      `select * from users where user='${user.user}' and password='${user.password}'`
     );
     res.send({ login: "ok" });
   } catch (err) {
