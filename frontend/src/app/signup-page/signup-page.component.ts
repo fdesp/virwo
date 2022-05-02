@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup-page',
@@ -10,14 +11,23 @@ export class SignupPageComponent implements OnInit {
   public user: string = '';
   public mail: string = '';
   public password: string = '';
-  public userExists: boolean = false;
+  public error: boolean = false;
+  public success: boolean = false;
   private API = 'http://127.0.0.1:3000/signup';
-  constructor(private http: HttpClient) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private http: HttpClient
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      this.error = params['r'] === 'error' ? true : false;
+      this.success = params['r'] === 'success' ? true : false;
+    });
+  }
 
   submit(): void {
-    this.userExists = false;
     const headers = { 'Content-Type': 'application/json' };
     this.http
       .post(
@@ -31,7 +41,15 @@ export class SignupPageComponent implements OnInit {
       )
       .subscribe((data: any) => {
         if (data.result === 'error') {
-          this.userExists = true;
+          const queryParams = { r: 'error' };
+          this.router.navigate(['signup'], { queryParams: queryParams });
+        }
+
+        if (data.result === 'ok') {
+          const queryParams = { r: 'success' };
+          this.router.navigate(['signup'], {
+            queryParams: queryParams,
+          });
         }
       });
   }
