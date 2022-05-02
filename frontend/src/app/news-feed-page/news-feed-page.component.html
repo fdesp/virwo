@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <app-feed-navbar></app-feed-navbar>
+
+  <app-feed-filters
+    (filterChange)="updateFilterSearch($event)"
+    (dateChange)="updateDateSearch($event)"
+  ></app-feed-filters>
+
+  <app-feed-search (searchTerm)="updateTermSearch($event)"></app-feed-search>
+
+  <div id="feeds-wrapper">
+    <div *ngFor="let article of articles">
+      <app-feed-card
+        title="{{ article.title }}"
+        source="{{ article.source.name }}"
+        urlToImage="{{ article.urlToImage }}"
+        description="{{ article.description }}"
+        url="{{ article.url }}"
+      ></app-feed-card>
+    </div>
+  </div>
+</div>
