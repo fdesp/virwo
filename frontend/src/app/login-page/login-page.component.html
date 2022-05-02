@@ -1,0 +1,35 @@
+<div class="container d-flex justify-content-center min-vh-100 min-vw-100">
+  <div
+    class="d-flex flex-column flex-grow-1 justify-content-center align-items-center"
+  >
+    <div class="card px-5 py-4 mb-3">
+      <h1 class="mb-4">My News Feed</h1>
+      <div *ngIf="msg" class="alert alert-danger" role="alert">
+        Error: Wrong user or password
+      </div>
+      <div class="form-group mb-4">
+        <input
+          name="user"
+          placeholder="User"
+          type="text"
+          class="form-control"
+          required
+          [(ngModel)]="user"
+        />
+      </div>
+      <div class="form-group mb-4">
+        <input
+          name="password"
+          placeholder="Password"
+          type="password"
+          class="form-control"
+          required
+          [(ngModel)]="password"
+        />
+      </div>
+      <button (click)="submit()" class="btn btn-primary">Login</button>
+      <hr />
+      <a routerLink="/signup">Sign Up</a>
+    </div>
+  </div>
+</div>

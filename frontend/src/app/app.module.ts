@@ -11,9 +11,10 @@ import { FeedCardComponent } from './feed-card/feed-card.component';
 import { FeedSearchComponent } from './feed-search/feed-search.component';
 import { FeedFiltersComponent } from './feed-filters/feed-filters.component';
 import { FeedNavbarComponent } from './feed-navbar/feed-navbar.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
-  declarations: [AppComponent, SignupPageComponent, NewsFeedPageComponent, FeedCardComponent, FeedSearchComponent, FeedFiltersComponent, FeedNavbarComponent],
+  declarations: [AppComponent, SignupPageComponent, NewsFeedPageComponent, FeedCardComponent, FeedSearchComponent, FeedFiltersComponent, FeedNavbarComponent, LoginPageComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
